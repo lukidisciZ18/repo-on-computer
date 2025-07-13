@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow - Your Personal Focus Coach</title>
+    <meta name="description" content="Build sustainable focus habits with personalized coaching, smart reminders, and culturally diverse wisdom.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/styles.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#10B981">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="public/icon-192x192.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FocusFlow">
+    <meta name="msapplication-TileColor" content="#10B981">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="src/main.js" as="script">
+    <link rel="preload" href="src/styles.css" as="style">
+</head>
+<body class="bg-gray-50 font-sans">
+    <div id="root">
+        <!-- Loading state -->
+        <div id="loading" class="min-h-screen flex items-center justify-center">
+            <div class="text-center">
+                <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <h1 class="text-2xl font-bold text-gray-900 mb-2">FocusFlow</h1>
+                <p class="text-gray-600">Loading your personal focus coach...</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK (for future authentication) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js" defer></script>
+    
+    <!-- App Scripts -->
+    <script type="module" src="src/main.js" defer></script>
+    
+    <!-- Fallback for older browsers -->
+    <script>
+        // Check if ES6 modules are supported
+        if (!('noModule' in HTMLScriptElement.prototype)) {
+            document.getElementById('loading').innerHTML = `
+                <div class="text-center p-8">
+                    <h1 class="text-2xl font-bold text-gray-900 mb-4">Browser Not Supported</h1>
+                    <p class="text-gray-600 mb-4">FocusFlow requires a modern browser that supports ES6 modules.</p>
+                    <p class="text-sm text-gray-500">Please update your browser or try Chrome, Firefox, Safari, or Edge.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html> 
